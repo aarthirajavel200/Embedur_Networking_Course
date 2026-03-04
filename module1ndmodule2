@@ -14,6 +14,7 @@
 
      remote_ip → destination machine IP
 
+
 2) Through FTP 
    sudo apt install vsftpd
    Starting service 
@@ -52,7 +53,45 @@ Capture ICMP packets
 
 sudo tcpdump icmp
 
+4) Ping
 
+     Used to check connectivity between two devices
+
+              ping 8.8.8.8
+
+    output parameters
+
+Field	Meaning
+bytes	packet size
+time	response time
+ttl	time to live
+seq	packet sequence
+
+
+ARP (Address Resolution Protocol)
+
+Shows IP to MAC address mapping
+
+arp -a
+
+Example output
+
+192.168.1.1 at 00:1a:2b:3c:4d:5e
+ifconfig
+
+Shows network configuration
+
+ifconfig
+
+Important parameters
+
+Parameter	Meaning
+inet	IP address
+netmask	subnet mask
+broadcast broadcast address
+ether	MAC address
+RX	received packets
+TX	transmitted packets
 
 
 5) Duplicate IP means two devices use the same IP address in the network.
@@ -69,9 +108,331 @@ Resolution:
     Assign unique IP addresses
     Use DHCP instead of manual IP
 
+6)1. Remote Access using VNC Viewer
+Aim
+
+To access and control a remote computer using VNC Viewer.
+
+Requirements
+
+Two systems connected to the same network
+
+VNC Server installed on the remote system
+
+VNC Viewer installed on the client system
+
+Step-by-Step Procedure
+Step 1: Install VNC Server on the Remote Machine
+
+On the remote computer, download and install VNC Server.
+
+For Ubuntu/Linux:
+
+sudo apt update
+sudo apt install tightvncserver
+
+Start the VNC server:
+
+tightvncserver
+
+During startup it will ask for a password for remote access.
+
+Step 2: Find the IP Address of the Remote Machine
+
+Run the command:
+
+ip addr
+
+Example output:
+
+inet 192.168.1.20
+
+This is the IP address of the remote system.
+
+Step 3: Install VNC Viewer on Client Machine
+
+Download VNC Viewer from:
+
+https://www.realvnc.com
+
+Install the software.
+
+Step 4: Connect to the Remote System
+
+Open VNC Viewer.
+
+Enter the address:
+
+192.168.1.20:5900
+
+Where
+
+192.168.1.20 → remote system IP
+
+5900 → default VNC port
+
+Step 5: Authenticate
+
+Enter the VNC password that was created earlier.
+
+Step 6: Remote Desktop Opens
+
+The remote computer desktop will appear on the client system.
+
+You can now:
+
+Control mouse and keyboard
+
+Run applications
+
+Transfer files
+
+2. Remote Access using AnyDesk
+Aim
+
+To access another system remotely using AnyDesk.
+
+Step-by-Step Procedure
+Step 1: Install AnyDesk
+
+Download from:
+
+https://anydesk.com
+
+Install on both remote system and client system.
+
+Step 2: Obtain AnyDesk ID
+
+Open AnyDesk on the remote system.
+
+You will see an ID such as:
+
+123 456 789
+
+This is the AnyDesk Address.
+
+Step 3: Enter the Remote ID
+
+On the client computer:
+
+Open AnyDesk
+
+Enter the remote AnyDesk ID
+
+Click Connect
+
+Step 4: Accept Connection
+
+On the remote system a popup appears.
+
+Click Accept.
+
+Step 5: Remote Desktop Access
+
+Now the client can:
+
+Control the remote computer
+
+Access files
+
+Run applications
+
+3. Remote Access using TeamViewer
+
+Aim
+   To connect and control a remote computer using TeamViewer.
+
+Step-by-Step Procedure
+Step 1: Install TeamViewer
+
+Download from:
+
+https://www.teamviewer.com
+
+Install on both computers.
+
+Step 2: Obtain Partner ID
+
+Open TeamViewer on the remote system.
+
+It will display:
+
+Your ID: 456 123 789
+Password: xxxx
+Step 3: Connect to Partner
+
+On the client system:
+
+Open TeamViewer
+
+Enter the Partner ID
+
+Click Connect
+
+Step 4: Enter Password
+
+Enter the password shown on the remote system.
+
+Step 5: Remote Control Starts
+
+The remote desktop will appear and the client can operate the system.
+
+
+4. Remote Access using Windows Remote Desktop (RDP)
+Aim
+
+To access a Windows computer remotely using Remote Desktop Protocol.
+
+Step-by-Step Procedure
+Step 1: Enable Remote Desktop
+
+On the remote Windows system:
+
+Open Settings
+
+Go to System
+
+Click Remote Desktop
+
+Enable Allow Remote Desktop
+
+Step 2: Find the IP Address
+
+Open Command Prompt and run:
+
+ipconfig
+
+Example:
+
+IPv4 Address : 192.168.1.20
+Step 3: Open Remote Desktop on Client
+
+Press:
+
+Windows + R
+
+Type:
+
+mstsc
+
+Press Enter.
+
+Step 4: Enter Remote IP Address
+
+In the Remote Desktop window type:
+
+192.168.1.20
+
+Click Connect.
+
+Step 5: Login
+
+Enter the username and password of the remote computer.
+
+Step 6: Remote Desktop Opens
+
+You can now control the remote system.
+
+
+
+
+
+
+
 
 7) Check default gateway
      ip route
   Ping the gateway
     ping 192.168.1.1
   If reply received → gateway reachable
+
+8) The ifconfig command (or ip addr in modern systems) displays details about network interfaces such as:
+
+IP Address – The address assigned to the device.
+
+MAC Address – Hardware address of the network interface.
+
+MTU (Maximum Transmission Unit) – Maximum packet size that can be transmitted (commonly 1500 bytes for Ethernet).
+
+RX/TX Packets – Number of packets received and transmitted.
+
+Status – Indicates whether the interface is UP or DOWN.
+
+The iwconfig command is used for wireless interfaces and provides:
+
+SSID (Network Name)
+
+Frequency
+
+Signal Strength
+
+Bit Rate (Speed)
+
+Mode (Managed/Monitor)
+
+These commands help analyze network configuration, performance, and connectivity status.
+
+9)Accessing the Home Router Web Interface
+
+To access the router settings, first open the Command Prompt and type:
+
+ipconfig
+
+From the output, identify the Default Gateway address under the active network adapter.
+
+In this case, the Default Gateway is:
+
+192.168.43.1
+
+Next, open a web browser such as Chrome, Edge, or Firefox and type the Default Gateway IP address in the address bar:
+
+http://192.168.43.1
+
+Press Enter.
+
+The router login page will appear. Enter the administrator username and password to access the router dashboard.
+
+Inside the router interface, the Connected Devices section displays:
+
+Device names
+
+IP addresses
+
+MAC addresses
+
+Connection type (wired or wireless)
+
+Thus, the router web interface allows monitoring and managing all devices connected to the network.
+
+
+
+
+
+10)DHCP (Dynamic Host Configuration Protocol) automatically assigns IP addresses to devices in a network.
+
+The process follows four steps (DORA process):
+
+Discover – The device broadcasts a request for an IP address.
+
+Offer – The DHCP server offers an available IP address.
+
+Request – The device requests the offered IP address.
+
+Acknowledge – The server confirms and assigns the IP.
+
+The DHCP server also provides:
+
+Subnet mask
+
+Default gateway
+
+DNS server address
+
+Lease duration
+
+This automation avoids manual configuration and prevents IP conflicts.
+
+11) Using SSh 
+   ssh student@192.168.1.10
+   Using Telnet 
+   telnet 192.168.1.20
