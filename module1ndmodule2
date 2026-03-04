@@ -53,45 +53,103 @@ Capture ICMP packets
 
 sudo tcpdump icmp
 
-4) Ping
+4) 1. ping Command
 
-     Used to check connectivity between two devices
+The ping command is used to test connectivity between two devices in a network.
 
-              ping 8.8.8.8
+🔹 Syntax:
+          ping <IP_address>
+🔹 Example:
+         ping 192.168.43.1
+🔹 Purpose:
 
-    output parameters
+         Checks whether the remote host is reachable.
 
-Field	Meaning
-bytes	packet size
-time	response time
-ttl	time to live
-seq	packet sequence
+         Measures round-trip time (RTT).
+
+         Detects packet loss.
+
+🔹 Sample Output Meaning:
+
+         bytes from → Reply received from destination.
+
+         time=10 ms → Time taken for packet to travel.
+
+         ttl=64 → Time To Live value.
+
+         packet loss → Indicates network reliability.
+
+2. arp Command
+
+        The arp (Address Resolution Protocol) command is used to display the mapping between IP addresses and MAC addresses in the local network.
+
+🔹 Syntax:
+        arp -a
+🔹 Purpose:
+
+        Displays ARP table.
+
+        Shows IP address with corresponding physical (MAC) address.
+
+        Helps in troubleshooting network communication.
+
+🔹 Example Output:
+           192.168.43.1    00:1a:2b:3c:4d:5e   ether   eth0
+
+            This means:
+
+              IP Address → 192.168.43.1
+
+              MAC Address → 00:1a:2b:3c:4d:5e
+
+              Interface → eth0
+
+Understanding Parameters from ifconfig Output
+
+From the ifconfig command:
+
+🔹 Interface Name (eth0, lo)
+
+        eth0 → Ethernet interface
+
+        lo → Loopback interface
+
+🔹 inet
+
+        IPv4 address assigned to the system.
+
+🔹 netmask
+
+         Defines network portion of IP address.
+
+🔹 broadcast
+
+         Used to send data to all devices in the network.
+
+🔹 inet6
+
+       IPv6 address.
+
+🔹 ether
+
+       MAC (hardware) address of the interface.
+
+🔹 mtu (Maximum Transmission Unit)
+
+       Maximum packet size (usually 1500 bytes for Ethernet).
+
+🔹 RX / TX packets
+
+       RX → Received packets
+
+       TX → Transmitted packets
+
+🔹 errors / dropped
+
+       Indicates transmission issues (if any).
 
 
-ARP (Address Resolution Protocol)
 
-Shows IP to MAC address mapping
-
-arp -a
-
-Example output
-
-192.168.1.1 at 00:1a:2b:3c:4d:5e
-ifconfig
-
-Shows network configuration
-
-ifconfig
-
-Important parameters
-
-Parameter	Meaning
-inet	IP address
-netmask	subnet mask
-broadcast broadcast address
-ether	MAC address
-RX	received packets
-TX	transmitted packets
 
 
 5) Duplicate IP means two devices use the same IP address in the network.
@@ -108,20 +166,23 @@ Resolution:
     Assign unique IP addresses
     Use DHCP instead of manual IP
 
-6)1. Remote Access using VNC Viewer
-Aim
+6)
 
-To access and control a remote computer using VNC Viewer.
+1. Remote Access using VNC Viewer
 
-Requirements
+Aim:
+     To access and control a remote computer using VNC Viewer.
 
-Two systems connected to the same network
+Requirements:
 
-VNC Server installed on the remote system
+       Two systems connected to the same network
 
-VNC Viewer installed on the client system
+       VNC Server installed on the remote system
 
-Step-by-Step Procedure
+       VNC Viewer installed on the client system
+
+Step-by-Step Procedure:
+
 Step 1: Install VNC Server on the Remote Machine
 
 On the remote computer, download and install VNC Server.
@@ -332,9 +393,6 @@ Enter the username and password of the remote computer.
 Step 6: Remote Desktop Opens
 
 You can now control the remote system.
-
-
-
 
 
 
