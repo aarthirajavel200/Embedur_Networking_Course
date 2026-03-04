@@ -1,0 +1,77 @@
+1)  cp -r project /home/aart/backup
+
+        cp → copy command
+        -r → recursive (copies folders and files inside it)
+
+    Using SCP : 
+    scp -r project divi@192.168.1.20:/home/aart/
+
+      scp → secure copy using SSH
+
+     -r → copy entire folder recursively
+
+     username → user in remote system
+
+     remote_ip → destination machine IP
+
+2) Through FTP 
+   sudo apt install vsftpd
+   Starting service 
+   sudo systemctl start vsftpd
+   Connecting to ftp 
+   ftp 192.168.1.20
+   Upload file (PUT)
+   put file.txt
+  Download file (GET)
+   get file.txt
+  To exit ftp 
+   exit 
+
+  SFTP (Secure FTP)
+  sftp username@192.168.1.20
+  Commands inside SFTP
+
+   put file.txt
+   get file.txt
+   ls
+   cd
+   exit
+
+
+3) Using tcpdump (Linux)
+
+Capture packets
+
+sudo tcpdump
+
+Capture specific interface
+
+sudo tcpdump -i eth0
+
+Capture ICMP packets
+
+sudo tcpdump icmp
+
+
+
+
+5) Duplicate IP means two devices use the same IP address in the network.
+
+Problems:
+    Network conflict
+    Packet loss
+    Connection instability
+    Devices become unreachable
+Detection:
+    System shows message like
+    IP address conflict detected
+Resolution:
+    Assign unique IP addresses
+    Use DHCP instead of manual IP
+
+
+7) Check default gateway
+     ip route
+  Ping the gateway
+    ping 192.168.1.1
+  If reply received → gateway reachable
